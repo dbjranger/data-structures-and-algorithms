@@ -102,7 +102,7 @@ Return the modified array.
 ------------------------------------------------------------------------------------------------ */
 
 const addValues = (arr, value) => {
-  // Solution code here...
+  // Solution code here..
 };
 
 const addNumbers = (num, arr, times, callback) => {
