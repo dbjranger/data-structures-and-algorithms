@@ -64,23 +64,16 @@ Then, write a function named `speaker` that takes in an array of strings and a c
 Use `forEach` to build a new array of strings, each string modified by the callback. Return the new array. 
 ------------------------------------------------------------------------------------------------ */
 
-const greeting = (word) => {
-  // Solution code here...
-  let newArray = [];
-  arr.forEach(word => {
-    let upAndExclamation = word.toUpperCase() + '!';
-    newArray.push(upAndExclamation);
-  });
+const greeting = (word) => word.toUpperCase() + '!';
 
-  return newArray;
-}
+
 
 const speaker = (words, callback) => {
   // Solution code here...
   let newArr = [];
   words.forEach(word => {
-    newArray.push(callback(word));
-  })
+    newArr.push(callback(word));
+  });
   return newArr;
 };
 
