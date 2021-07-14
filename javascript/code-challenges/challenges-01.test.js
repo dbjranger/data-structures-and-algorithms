@@ -15,11 +15,8 @@ const addOne = (arr) => {
     let sum = num + 1;
     newArray.push(sum);
   });
-
   return newArray;
 };
-
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -36,7 +33,6 @@ const addExclamation = (arr) => {
     let add = word + '!';
     newArray.push(add);
   });
-
   return newArray;
 };
 
@@ -55,7 +51,6 @@ const allUpperCase = (arr) => {
     let capitalizing = word.toUpperCase();
     newArray.push(capitalizing);
   });
-
   return newArray;
 };
 
@@ -78,11 +73,15 @@ const greeting = (word) => {
   });
 
   return newArray;
-
-};
+}
 
 const speaker = (words, callback) => {
   // Solution code here...
+  let newArr = [];
+  words.forEach(word => {
+    newArray.push(callback(word));
+  })
+  return newArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -102,17 +101,21 @@ Return the modified array.
 ------------------------------------------------------------------------------------------------ */
 
 const addValues = (arr, value) => {
-  // Solution code here..
-
+  // Solution code here...
+  arr.push(value);
 };
 
 const addNumbers = (num, arr, times, callback) => {
   // Solution code here...
+  for (let i = 0; i < times; i++) {
+    callback(arr, num);
+  }
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
 
-CHALLENGE 6
+CHALLENGE 678787
 
 Write a function named createList that takes in an array of the current store intentory.
 
@@ -128,15 +131,17 @@ The inventory is formatted like this:
 This function should use forEach to populate your grocery list based on the store's inventory. If the item is available, add it to your list. Return the final list.
 ------------------------------------------------------------------------------------------------ */
 
-const createList = (arr) => {
+const createList = (availableItems) => {
   // Solution code here...
-  let availableFruit = [];
-  arr.forEach(fruit => {
-    let addFruit = fruit.available === true;
-      addFruit.push(fruit);
-    })
+  let list = [];
 
-  return availableFruit;
+  availableItems.forEach(item => {
+    if (item.available) {
+      list.push(item.name);
+    }
+  })
+
+  return list;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -192,14 +197,14 @@ describe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should add the number 8 to the array five times', () => {
     expect(addNumbers(8, [], 5, addValues)).toStrictEqual([8, 8, 8, 8, 8]);
     expect(addNumbers(8, [], 5, addValues).length).toStrictEqual(5);
   });
 });
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   const inventory = [{ name: 'apples', available: true }, { name: 'pears', available: true }, { name: 'oranges', available: false }, { name: 'bananas', available: true }, { name: 'blueberries', available: false }];
 
   test('It should only add the available items to the list', () => {
