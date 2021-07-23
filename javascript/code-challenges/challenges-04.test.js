@@ -104,6 +104,10 @@ Here is an example of the input:
 
 const sortByPrice = (arr) => {
   // Solution code here...
+  let answer = arr.sort(function (a, b) {
+    return a.price - b.price;
+  });
+  return answer;
 };
 
 /* ------------------------------------------------------------------------------------------------
