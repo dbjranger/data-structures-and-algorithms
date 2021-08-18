@@ -74,16 +74,11 @@ HR has asked you to change the data to make it easier to print so that it looks 
 
 ------------------------------------------------------------------------------------------------ */
 
-const updateNumbers = (obj) => {
-  // Solution code here...
-  let answer = [];
-  let keys = Object.keys(obj);
-  let values = Object.values(obj);
-  for (let i = 0; i < 3; i++) {
-    let value = `${keys[i]}: ${values[i]}`;
-    answer.push(value);
-  }
-  return answer;
+const divisibleByFiveTwoToThePower = (input) => {
+  let result = input.map((row) => {
+    return row.filter((cell) => typeof cell === 'number' && cell % 5 === 0).map(filterCell => Math.pow(2, filterCell));
+  });
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
