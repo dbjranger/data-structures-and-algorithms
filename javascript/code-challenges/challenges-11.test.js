@@ -20,7 +20,7 @@ Becomes:
 
 function transformToLis(obj){
   // Solution code here...
-  return `<li>${Object.keys(obj)}: ${Object.values(obj)}</li>`
+  return `<li>${Object.keys(obj)}: ${Object.values(obj)}</li>`;
 }
 
 /* ------------------------------------------------------------------------------------------------
