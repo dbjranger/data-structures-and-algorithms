@@ -7,26 +7,10 @@ Write a function named longestString that takes in an array of strings and retur
 ------------------------------------------------------------------------------------------------ */
 
 const longestString = (arr) => {
-  const index = {
-    0: 0,
-  };
-  const longest = arr.reduce(
-    (acc, val, index) => {
-      const actualLength = val.split(" ").join("").length;
-      if (actualLength > acc.length) {
-        return {
-          index,
-          length: actualLength,
-        };
-      }
-      return acc;
-    },
-    {
-      index: 0,
-      length: 0,
-    }
-  );
-  return longest.index;
+  let currentLongest = {largestIdx: -1, largestStringLength: 0};
+  arr.forEach((str, idx) => {
+    (str.length > currentLongest.largestStringLength) ? currentLongest = {largestIdx: idx, largestStringLength: str.length} : ''});
+  return currentLongest.largestIdx;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -68,16 +52,8 @@ For example, (123) 456-7890 returns 1234567890
 ------------------------------------------------------------------------------------------------ */
 
 const standardizePhoneNumbers = (arr) => {
-    for (let i = 0; i < arr.length; i++) {
-      for (let j = 0; j < arr[i].length; j++) {
-        if (arr[i][j] === '-') {
-          arr.splice([i][j]);
-          // arr[i][j].pop();
-        }
-      }
-      }
-      return arr;
-  }
+  return arr.map((num) => `${num.substring(1, 4)}${num.substring(6, 9)}${num.substring(10)}`);
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 
@@ -89,6 +65,9 @@ For example, 'abcdefg' returns 'bdf'
 
 const onlyOddChars = (str) => {
   // Solution code here...
+  return str.split('')
+    .filter((elem, idx) => idx % 2 === 1)
+    .join('');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -99,6 +78,7 @@ Write a function named allHappy that takes in an array of strings and returns a 
 
 const allHappy = (arr) => {
   // Solution code here...
+  return arr.every((str) => str.includes(':)'));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -264,7 +244,7 @@ describe("Testing challenge 4", () => {
   });
 });
 
-xdescribe("Testing challenge 5", () => {
+describe("Testing challenge 5", () => {
   test("It should only return the odd indexed characters from the string", () => {
     expect(onlyOddChars("0123456789")).toStrictEqual("13579");
     expect(onlyOddChars("abcd")).toStrictEqual("bd");
@@ -273,7 +253,7 @@ xdescribe("Testing challenge 5", () => {
   });
 });
 
-xdescribe("Testing challenge 6", () => {
+describe("Testing challenge 6", () => {
   test("It should correctly assess whether all the strings are happy", () => {
     const words = [
       "things",
